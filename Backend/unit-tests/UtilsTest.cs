@@ -1,7 +1,5 @@
-using Xunit;
-using Xunit.Abstractions;
 namespace WebApp;
-public class UtilsTest
+public class UtilsTest(Xlog Console)
 {
 
 
@@ -35,18 +33,6 @@ public class UtilsTest
 
   */
 
-    // The following lines are needed to get 
-    // output to the Console to work in xUnit tests!
-    // (also needs the using Xunit.Abstractions)
-    // Note: You need to use the following command line command 
-    // dotnet test --logger "console;verbosity=detailed"
-    // for the logging to work
-    
-    private readonly ITestOutputHelper output;
-    public UtilsTest(ITestOutputHelper output)
-    {
-        this.output = output;
-    }
 
 
     [Fact]
@@ -66,13 +52,14 @@ public class UtilsTest
         var result = Utils.CreateMockUsers();
         // Assert that the CreateMockUsers only return
         // newly created users in the db
-        output.WriteLine($"The test expected that {mockUsersNotInDb.Length} users should be added.");
-        output.WriteLine($"And {result.Length} users were added.");
-        output.WriteLine("The test also asserts that the users added " +
+        Console.WriteLine($"The test expected that {mockUsersNotInDb.Length} users should be added.");
+        Console.WriteLine($"And {result.Length} users were added.");
+        Console.WriteLine("The test also asserts that the users added " +
             "are equivalent (the same) to the expected users!");
         Assert.Equivalent(mockUsersNotInDb, result);
-        output.WriteLine("The test passed!");
+        Console.WriteLine("The test passed!");
     }
+
 
 
     //Metod 4
