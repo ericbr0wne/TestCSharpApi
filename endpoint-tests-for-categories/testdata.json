@@ -14,6 +14,43 @@
       "description": "Allt du behöver för att hålla hemmet rent."
     }
   ],
-  "products": [],
-  "comments": []
+  "products": [
+    {
+    "name":"Gurka",
+    "description":"Odlad i Åkarp",
+    "price":25,
+    "categoryId":"Grönsaker"
+    },
+    {
+    "name": "Äpple",
+    "description": "Golden delicious",
+    "price": 7.49,
+    "categoryId":"Frukter"
+    },
+    {
+    "name": "Fönsterputs",
+    "description": "Blänkande fint",
+    "price": 59.98,
+    "categoryId":"Rengöringsprodukter"
+    }
+  
+    ],
+  "comments": [
+    {
+    "comment":"Very nice gurka.",
+    "productId":"Gurka",
+    "userId":3
+    },
+    {
+    "comment":"Tasty and fresh apple!",
+    "productId":"Frukter",
+    "userId":5
+    },
+    {
+    "comment":"Ger fula ränder!",
+    "productId":"Rengöringsprodukter",
+    "userId":4
+    }
+  ]
 }
+
