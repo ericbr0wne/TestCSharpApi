@@ -57,4 +57,27 @@ public static class Utils
         }
         return successFullyWrittenUsers;
     }
+        //Metod 4
+        public static Arr RemoveMockUsers()
+    {
+        var read = File.ReadAllText(FilePath("json", "mock-users.json"));
+        Arr mockUsers = JSON.Parse(read);
+        Arr removedMockUsers = Arr();
+
+        foreach (var user in mockUsers)
+        {
+            var result = SQLQueryOne(
+                @"delete from users where firstName = $firstName and lastName = $lastName",
+                user);
+
+            if (!result.HasKey("error"))
+            {
+                user.Delete("password");
+                removedMockUsers.Push(user);
+            }
+        }
+        return removedMockUsers;
+    }
+
+
 }

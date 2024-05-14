@@ -52,6 +52,29 @@ public class UtilsTest(Xlog Console)
 
 
     //Metod 4
+    [Fact]
+    public void TestRemoveMockUsers()
+    {
+        var read = File.ReadAllText(FilePath("json", "mock-users.json"));
+        Arr mockUsers = JSON.Parse(read);
+        var removedMockUsers = Utils.RemoveMockUsers();
+
+        Arr removedMockUserEmails = removedMockUsers.Map(user => user.email);
+
+        Arr remainingUsersInDb = SQLQuery("select email from users");
+
+        foreach (var user in removedMockUsers)
+        {
+            Assert.DoesNotContain(user.email, remainingUsersInDb.Map(u => u.email));
+        }
+
+        Assert.Equivalent(mockUsers, removedMockUsers);
+
+        Console.WriteLine($"{removedMockUsers.Length} mock users removed from db");
+        Console.WriteLine("test passed");
+
+    Utils.CreateMockUsers();
+    }
 
 
 
