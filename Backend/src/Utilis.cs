@@ -2,6 +2,9 @@ using System.Diagnostics.Eventing.Reader;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Identity;
 using Xunit;
+using System.IO;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace WebApp;
 
@@ -15,22 +18,18 @@ public static class Utils
             return passwordCheck.IsMatch(password);
         }
 
-/*
+
         //Metod 2
-        public static Arr RemoveBadWordTest(string badword, string cencured)
-        {
+  public static string RemoveBadWords(string badStrings, string censored)
+    {
+        var badWordsFromFile = File.ReadAllText(Path.Combine("json", "bad-words.json"));
+        Arr badWords = JSON.Parse(badWordsFromFile);
 
-            var readBadWordsList = File.ReadAllLines(Path.Combine("json\bad-words.json"));
-            Arr badWordsList = JSON.Parse(readBadWordsList);
+        string cleanStrings = Regex.Replace(badStrings, "\\b" + string.Join("\\b|\\b", badWords) + "\\b", censored, RegexOptions
+        .IgnoreCase);
 
-            string cleanStrings = Regex.Replace(badword, "\\b" + string.Join("\\b|\\b", badWordsList,) +"\\b", cencured);
-
-            return cleanStrings;
-        }
-
-    
-
-*/
+        return cleanStrings;
+    }
 
 
     //Metod 3
@@ -59,5 +58,3 @@ public static class Utils
         return successFullyWrittenUsers;
     }
 }
-
-

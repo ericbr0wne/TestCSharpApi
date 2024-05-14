@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace WebApp;
 public class UtilsTest(Xlog Console)
 {
-
-
     //Metod 1
     [Theory]
     [InlineData("psw123", false)] // Bad password
@@ -13,30 +11,18 @@ public class UtilsTest(Xlog Console)
     public void IsPasswordGoodEnoughTest(string password, bool expectedResult)
     {
         bool result = Utils.IsPasswordGoodEnough(password);
-
         Assert.Equal(expectedResult, result);
-    
     }
-
 
     //Metod 2
-    /*
     [Theory]
-    [InlineData("shit", false, "****")] //bad word
-    [InlineData("angel", true, "****")] //good word
-    [InlineData("Hell", false, "****")] //bad word
-    [InlineData("Hello", true, "****")] //good word
+    [InlineData("shit happens", "****", "**** happens")]
+    [InlineData("angel ass", "****", "angel ****")]
 
-    public void RemoveBadWordTest(string badword, bool expectedResult, string cencured)
+    public void TestRemoveBadWords(string badStrings, string censored, string cleanStrings)
     {
-
-
-        return 
+        Assert.Equal(cleanStrings, Utils.RemoveBadWords(badStrings, censored));
     }
-
-  */
-
-
 
     [Fact]
     public void TestCreateMockUsers()
