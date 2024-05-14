@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Razor.TagHelpers;
+
 namespace WebApp;
 public class UtilsTest(Xlog Console)
 {
@@ -7,6 +9,7 @@ public class UtilsTest(Xlog Console)
     [Theory]
     [InlineData("psw123", false)] // Bad password
     [InlineData("Psw12345!", true)] // Good password
+    [InlineData("TestaÅäÖ123!", true)]
     public void IsPasswordGoodEnoughTest(string password, bool expectedResult)
     {
         bool result = Utils.IsPasswordGoodEnough(password);

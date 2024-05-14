@@ -10,7 +10,7 @@ public static class Utils
         //Metod 1
         public static bool IsPasswordGoodEnough(string password)
         { 
-            Regex passwordCheck = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
+            Regex passwordCheck = new Regex("^(?=.*?[A-ZÅÄÖ])(?=.*?[a-zåäö])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
         
             return passwordCheck.IsMatch(password);
         }
