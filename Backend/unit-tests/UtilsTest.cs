@@ -73,9 +73,28 @@ public class UtilsTest(Xlog Console)
 
         Utils.CreateMockUsers();
     }
+
     //Metod 5
-
-
-
+    [Fact]
+    public void TestCountDomainsFromUserEmails()
+    {
+        Arr users = SQLQuery("SELECT email FROM users");
+        Obj domainsInDb = Obj();
+        foreach (var user in users)
+        {
+            string domain = user.email.Split('@')[1];
+            if(!domainsInDb.HasKey(domain))
+            {
+                domainsInDb[domain] = 1;
+            }
+            else
+            {
+                domainsInDb[domain]++;
+            }
+        }
+        Assert.Equivalent(domainsInDb, Utils.CountDomainsFromUserEmails());
+        
+        Console.WriteLine("Test passed !!!!");
+    }
 
 }
