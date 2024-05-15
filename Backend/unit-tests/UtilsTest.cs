@@ -49,9 +49,7 @@ public class UtilsTest(Xlog Console)
         Console.WriteLine("The test passed!");
     }
 
-
-
-    //Metod 4
+  //Metod 4
     [Fact]
     public void TestRemoveMockUsers()
     {
@@ -67,18 +65,17 @@ public class UtilsTest(Xlog Console)
         {
             Assert.DoesNotContain(user.email, remainingUsersInDb.Map(u => u.email));
         }
-
+        
         Assert.Equivalent(mockUsers, removedMockUsers);
 
         Console.WriteLine($"{removedMockUsers.Length} mock users removed from db");
         Console.WriteLine("test passed");
 
-    Utils.CreateMockUsers();
+        Utils.CreateMockUsers();
     }
-
-
-
     //Metod 5
 
 
-}  
+
+
+}
