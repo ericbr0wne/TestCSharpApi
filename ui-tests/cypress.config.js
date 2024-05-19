@@ -4,6 +4,7 @@ const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-pr
 
 module.exports = defineConfig(
   {
+  projectId: 'w1at2w',
     e2e:
     {
       specPattern: '**/*.feature',
