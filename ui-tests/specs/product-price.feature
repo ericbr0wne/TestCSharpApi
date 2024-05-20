@@ -8,10 +8,10 @@ When I choose the category "<category>"
 Then the product "<productName"> should be shown with the price "<price>"
 
 Examples:
-| category | productName | price |
+| category | productName |               price |
 | alla     | Direct Drive Turntable
-           | Belt Drive Turntable
-| USB Turntable
+| Turntable| Belt Drive Turntable
+| Turntable           | USB Turntable
 | 2-Channel Mixer
 | 4-Channel Mixer
 | Digital Mixer
