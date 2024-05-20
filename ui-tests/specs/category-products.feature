@@ -1,0 +1,1 @@
+//Att rätt produkter visas när användaren väljer en viss kategori
