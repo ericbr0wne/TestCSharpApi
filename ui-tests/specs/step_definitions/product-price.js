@@ -1,12 +1,14 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-/* No duplicate steps, this one already in correct-products.js
-Given('that I am on the product page', () => {});*/
-
-When('I choose the category {string}', (category) => {
-  // TODO: implement step
+Given('that I hang out on the product page', () => {
+  cy.visit('/products');
 });
 
-Then('the product {string}> should be shown with the price {string}', (price, a) => {
-  // TODO: implement step
+When('I get the category {string}', (category) => {
+  cy.get('#categories').select(category);
+});
+
+Then('the product {string} should be shown with the price {string}', (productName, price) => {
+  cy.get('.product').contains('div.product', productName).find('.price').contains('Pris: ' + price + ' kr')
+  
 });

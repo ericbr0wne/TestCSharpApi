@@ -1,7 +1,15 @@
-Feature: As user I want to be able to see the correct products listed when I have chosen a category so that I can easily filter the product list by category.
+Feature: As a user, I want to be able to see the correct products listed when I have chosen a category so that I can easily filter the product list by category.
 
-  Scenario: Check that the "Prisvänligt"-category shows the right products.
-    Given that I am on the product page
-    When I choose the category "Prisvänligt"
-    Then I should see the product "Basic tomatsås"
-    And I should see the product "Mjöliga makaroner"
+  Scenario Outline: Display products based on selected category
+    Given I on the homepage
+    When I choose "<category>" from the category selector
+    Then I should only see products belonging to the "<category>"
+
+  Examples:
+    | category       |
+    | Turntables     |
+    | Mixers         |
+    | Speakers       |
+    | Headphones     |
+    | DJ Controllers |
+    | Alla           |
