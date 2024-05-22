@@ -2,9 +2,11 @@ name: .NET Core Desktop
 
 on:
   push:
-    branches: [ "feature-2024-05-20" ]
+
+    branches: [ "feature-2024-05-16" ] 
   pull_request:
-    branches: [ "feature-2024-05-20" ]
+    branches: [ "feature-2024-05-16" ]  
+
 
 jobs:
 
@@ -46,6 +48,10 @@ jobs:
       run: cd Backend && nohup dotnet run &
 
     # Run the endpoint tests
+    - name: Run the endpoint tests
+      shell: bash
+      run: cd endpoint-tests && npm test
+      
     # (note: The reason we don't have to install Newman
     #  is that it is already installed in the 
     #  GitHub Actions Windows Server runner image)
@@ -57,3 +63,4 @@ jobs:
     - name: Run the UI tests
       shell: bash
       run: cd ui-tests && npm install && npm run test-ui-cli
+
